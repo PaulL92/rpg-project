@@ -9,6 +9,7 @@ class Adventurers
     protected $attack = 10;
     protected $defense = 5;
     protected $speed = 5;
+    protected $intelligence = 5;
     protected $warCry;
     protected $equipment;
 
@@ -51,6 +52,8 @@ class Adventurers
         $this->attack += $equip->get_atk();
         $this->defense += $equip->get_def();
         $this->health += $equip->get_hp();
+        $this->speed += $equip->get_speed();
+        $this->intelligence += $equip->get_intelligence();
     }
 
     public function unset_equipment($removeEquip)
@@ -60,6 +63,8 @@ class Adventurers
                 $this->attack -= $this->equipment[$key]->get_atk();
                 $this->defense -= $this->equipment[$key]->get_def();
                 $this->health -= $this->equipment[$key]->get_hp();
+                $this->speed -= $this->equipment[$key]->get_speed();
+                $this->intelligence -= $this->equipment[$key]->get_intelligence();
                 unset($this->equipment[$key]);
             }
         }
@@ -101,5 +106,13 @@ class Adventurers
     public function get_defense()
     {
         return $this->defense;
+    }
+    public function get_speed()
+    {
+        return $this->speed;
+    }
+    public function get_intelligence()
+    {
+        return $this->intelligence;
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 require_once "Adventurers.php";
-require_once "Equipment.php";
+
 
 class Human extends Adventurers
 {
