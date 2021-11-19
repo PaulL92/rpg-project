@@ -3,26 +3,22 @@
 class Adventurers
 {
 
-    protected $race;
     protected $name;
-    protected $health = 100;
+    public $health = 100;
     protected $attack = 10;
     protected $defense = 5;
     protected $speed = 5;
     protected $intelligence = 5;
     protected $warCry;
     protected $equipment;
+    protected $powerUsed = false;
 
     //CONSTRUCTOR
 
-    public function __construct($n, $r, $w)
+    public function __construct($n, $w)
     {
         $this->name = $n;
-        if ($r == "Elf" || $r == "Human" || $r == "Orc")
-            $this->race = $r;
-        else echo "The race has to be Elf, Human or Orc.";
-        if ($this->race == "Orc") $this->warCry = "wwouogrouroulou mlll !!";
-        else $this->warCry = $w;
+        $this->warCry = $w;
     }
 
     //SETTERS AND GETTERS

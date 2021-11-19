@@ -6,8 +6,24 @@ require_once "./Characters/Elf.php";
 require_once "./Characters/Orc.php";
 require_once "./Characters/Human.php";
 require_once "./Equipment/gear.php";
+require_once "./Equipment/Weapon.php";
+require_once "./Equipment/weaponTypes/Axe.php";
+require_once "./Equipment/weaponTypes/Bow.php";
+require_once "./Equipment/weaponTypes/Dagger.php";
+require_once "./Equipment/weaponTypes/Shield.php";
+require_once "./Equipment/weaponTypes/Staff.php";
+require_once "./Equipment/weaponTypes/Bow.php";
+require_once "./battle/battle.php";
 
-?>
+$char1 = new Human("Nomekron", "Attaaaaaaack!");
+$char2 = new Elf("Ariana", "Die you fool");
+$char3 = new Orc("Grom");
+
+battle($char1, $char2);
+
+
+
+/* ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,4 +40,4 @@ require_once "./Equipment/gear.php";
 
 </body>
 
-</html>
+</html> */

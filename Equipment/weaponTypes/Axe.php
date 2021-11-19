@@ -6,28 +6,64 @@ require_once "../Weapon.php";
 class Axe extends Weapon
 {
 
-    public function __construct($adventurer)
+    public function __construct($character)
     {
-        if ($adventurer->race == "Elf") {
-            $adventurer->attack += 3;
-            $adventurer->speed -= 4;
-            $adventurer->defense -= 2;
+        if (get_class($character) == "Elf") {
+            if ($this->hands == 2) {
+                $character->attack += 2;
+                $character->speed -= 4;
+                $character->defense -= 2;
+            } else {
+                $character->attack += 1;
+                $character->speed -= 2;
+                $character->defense -= 1;
+            }
         }
-        if ($adventurer->race == "Orc") {
-            $adventurer->attack += 4;
-            $adventurer->defense -= 4;
-            $adventurer->speed += 2;
+        if (get_class($character)  == "Orc") {
+            if ($this->hands == 2) {
+                $character->attack += 4;
+                $character->defense -= 4;
+                $character->speed += 2;
+            } else {
+                $character->attack += 3;
+                $character->defense -= 3;
+                $character->speed += 1;
+            }
         }
-        if ($adventurer->class == "Warrior") $adventurer->attack += 2;
-        if ($adventurer->class == "Hunter") {
-            $adventurer->attack += 3;
-            $adventurer->speed -= 3;
+        if (get_class($character)  == "Human") {
+            if ($this->hands == 2) {
+                $character->attack += 3;
+                $character->defense -= 2;
+            } else {
+                $character->attack += 1;
+                $character->defense -= 1;
+            }
         }
-        if ($adventurer->class == "Mage") {
-            $adventurer->attack -= 2;
-            $adventurer->intelligence -= 3;
-            $adventurer->defense -= 2;
-            $adventurer->speed -= 1;
+        if ($character->class == "Warrior") {
+            if ($this->hands == 2) {
+                $character->attack += 5;
+                $character->speed -= 2;
+                $character->defense -= 3;
+            } else {
+                $character->attack += 3;
+                $character->defense -= 2;
+            }
+        }
+        if ($character->class == "Hunter") {
+            if ($this->hands == 2) {
+                $character->attack += 2;
+                $character->speed -= 4;
+            } else {
+                $character->attack += 1;
+                $character->speed -= 3;
+            }
+        }
+        if ($character->class == "Mage") {
+            //if clause for mage equipment -> cannot wear a 2h axe
+            $character->attack -= 2;
+            $character->intelligence -= 3;
+            $character->defense -= 2;
+            $character->speed -= 1;
         }
     }
 }

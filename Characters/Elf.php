@@ -6,24 +6,32 @@ require_once "Adventurers.php";
 class Elf extends Adventurers
 {
 
-    protected $race = "Elf";
-
     public function __construct($name, $warCry)
     {
-        parent::__construct($name, $this->race, $warCry);
+        $this->speed += 3;
+        $this->intelligence += 2;
+        $this->defense -= 4;
+        parent::__construct($name, $warCry);
     }
 
     public function attack($opponent)
     {
         $bonus = 0;
-        foreach ($this->equipment as $equip) {
-            if ($equip->type == "sword") $bonus += 2;
-        }
+        if (is_array($this->equipment))
+            foreach ($this->equipment as $equip) {
+                if ($equip->type == "sword") $bonus += 2;
+            }
         $opponent->health -= $this->attack + $bonus - $opponent->defense;
+        if ($opponent->health > 0)
+            echo $this->name . " caused an injury of " . ($this->attack + $bonus - $opponent->defense) . ". " . $opponent->name . " still has " . $opponent->health;
+        else echo $this->name . " caused an injury of " . ($this->attack + $bonus - $opponent->defense) . ". " .  $opponent->name .   " is dead!";
     }
 
     public function usePower()
     {
-        $this->speed += 3;
+        if (!$this->powerUsed) {
+            $this->speed += 3;
+            $this->powerUsed = true;
+        }
     }
 }
