@@ -4,7 +4,7 @@ class Adventurers
 {
 
     protected $name;
-    public $health = 100;
+    protected $health = 100;
     protected $attack = 10;
     protected $defense = 5;
     protected $speed = 5;

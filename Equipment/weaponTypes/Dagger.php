@@ -1,7 +1,6 @@
 <?php
 
-require_once "../Equipment.php";
-require_once "../Weapon.php";
+spl_autoload_register();
 
 class Dagger extends Weapon
 {
