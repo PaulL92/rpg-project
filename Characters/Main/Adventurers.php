@@ -1,5 +1,7 @@
 <?php
 
+namespace Characters\Main;
+
 class Adventurers
 {
 

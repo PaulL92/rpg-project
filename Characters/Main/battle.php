@@ -1,5 +1,7 @@
 <?php
 
+namespace Characters\Main;
+
 spl_autoload_register();
 
 function battle($attacker, $defender)

@@ -1,5 +1,7 @@
 <?php
 
+namespace Characters\Main;
+
 require_once "Adventurers.php";
 
 
@@ -22,13 +24,14 @@ class Human extends Adventurers
                     $bonus = 3;
             }
         }
+        $normalAttack = rand($this->attack / 2, $this->attack + 10);
+        $dmg = $normalAttack + $bonus - $opponent->defense;
 
-
-        $opponent->health -= $this->attack + $bonus - $opponent->defense;
+        $opponent->health -= $dmg;
 
         if ($opponent->health > 0)
-            echo $this->name . " caused an injury of " . ($this->attack + $bonus  - $opponent->defense) . ". " . $opponent->name . " still has " . $opponent->health;
-        else echo  $this->name . " caused an injury of " . ($this->attack + $bonus - $opponent->defense) . ". " .  $opponent->name .   " is dead!";
+            echo $this->name . " caused an injury of " . $dmg . ". " . $opponent->name . " still has " . $opponent->health;
+        else echo  $this->name . " caused an injury of " . $dmg . ". " .  $opponent->name .   " is dead!";
     }
 
     public function usePower()
